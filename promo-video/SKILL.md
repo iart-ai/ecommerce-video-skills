@@ -1,5 +1,5 @@
 ---
-name: sale-promo-video
+name: promo-video
 description: This skill should be used when the user asks to "make a sale video", "create a promo video", "build a discount/percentage-off reveal", "animate a was→now price with a strike-through", "do a Black Friday / flash-sale / clearance video", "make a promo-code reveal with a countdown", or "batch a promo template across many products". Covers the offer-announcement arc — discount reveal, price strike-through, promo code, urgency, product shot, CTA — and product+offer data → many videos.
 version: 0.1.0
 ---

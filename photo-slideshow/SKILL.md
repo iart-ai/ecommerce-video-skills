@@ -1,5 +1,5 @@
 ---
-name: slideshow-video
+name: photo-slideshow
 description: This skill should be used when the user asks to "make a photo slideshow", "turn photos into a video", "create a photo montage video", "make a picture slideshow with music", "build a memories/recap video from photos", "add Ken Burns pan/zoom to photos", "sync slide changes to the music beat", or "render a video from a folder of images". Covers per-photo Ken Burns motion, transitions, beat-synced timing, mixed aspect-ratio handling, captions/dates, intro/outro cards, and templating a photo folder into a finished video.
 version: 0.1.0
 ---

@@ -1,4 +1,4 @@
-# Slideshow Video
+# Photo Slideshow
 
 Turn a set of photos into a finished video that feels shot, not assembled. Each still gets its own gentle Ken Burns motion (deterministic per index, so no two slides move the same way), slides change on the music beat, mixed portrait/landscape shapes are handled without stretching, and the whole folder reads through one template so the same setup renders any set of images. Built for anyone turning a folder of product or event photos into a montage, recap, or memories video.
 

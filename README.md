@@ -15,8 +15,8 @@ Works with Claude Code, Cursor, Codex, GitHub Copilot, and 40+ agents.
 | Skill | What it does |
 |---|---|
 | [product-demo-video](./product-demo-video) | Turn static product/app screenshots into a polished animated demo — device frames, synthetic cursor + click, zoom-to-region, feature captions. |
-| [sale-promo-video](./sale-promo-video) | Punchy 6–15s sale spot — discount reveal, was→now price strike-through, promo code, countdown, CTA, batched across many products. |
-| [slideshow-video](./slideshow-video) | Turn a folder of photos into a finished video — per-photo Ken Burns motion, beat-synced transitions, mixed aspect ratios, captions. |
+| [promo-video](./promo-video) | Punchy 6–15s sale spot — discount reveal, was→now price strike-through, promo code, countdown, CTA, batched across many products. |
+| [photo-slideshow](./photo-slideshow) | Turn a folder of photos into a finished video — per-photo Ken Burns motion, beat-synced transitions, mixed aspect ratios, captions. |
 
 ## When it activates
 
@@ -36,8 +36,8 @@ Works with Claude Code, Cursor, Codex, GitHub Copilot, and 40+ agents.
 ## Skills
 
 - [product-demo-video](./product-demo-video)
-- [sale-promo-video](./sale-promo-video)
-- [slideshow-video](./slideshow-video)
+- [promo-video](./promo-video)
+- [photo-slideshow](./photo-slideshow)
 
 ## Topics
 

@@ -1,4 +1,4 @@
-# Sale Promo Video
+# Promo Video
 
 Make a punchy 6–15s sale spot that announces ONE offer and makes a viewer act now: the discount lands, the price drops from was→now with a strike-through, the promo code and deadline read clean, and the CTA closes. Prices and percentages are computed from the data — never typed twice — so the number on screen is always exact. Built for ecommerce sellers running discounts, Black Friday, flash sales, and clearance.
 
