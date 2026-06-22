@@ -159,6 +159,42 @@ Hold the outgoing screen until its click resolves, then transition — never cut
 - One motion at a time (camera or cursor); zoom ≤ 2×, held 2–4s.
 - One benefit caption per beat, in the title-safe lower third; transitions use one consistent language.
 
+## Deliver & verify (rendered stills → MP4)
+
+This is heavy-tier: the deliverable is an MP4, not a live page. The demo ingests user assets — screenshots/designs, optional logo — so verification is mostly *did the right image actually load and land in frame*.
+
+**Output contract:**
+- A Remotion project with the composition registered (`<Composition>` + zod `schema` + `defaultProps`); every cursor/zoom/transition value a pure function of `useCurrentFrame()` (no CSS transitions, timers, `Date.now()`).
+- Screenshots loaded via `staticFile()`, gated with `delayRender`/`continueRender` so the 2× PNG (and any web font) is present before the frame renders — otherwise the screen pops in blank mid-demo.
+- Deliverable = the rendered `out/*.mp4` plus the project (re-render when the screenshot changes).
+
+**Verify loop — render stills → inspect → encode.** Cheap PNGs first, video only once they're right.
+
+```bash
+# Frame-exact stills WITH THE PROPS YOU'LL SHIP (real screenshot paths), not defaultProps
+npx remotion still ProductDemo out/f-settle.png --frame=15  --props=demo.json   # screen framed, before move
+npx remotion still ProductDemo out/f-click.png  --frame=90  --props=demo.json   # cursor on target + ripple
+npx remotion still ProductDemo out/f-zoom.png   --frame=150 --props=demo.json   # zoomed to focal region + caption
+# end frame = durationInFrames - 1 (npx remotion compositions reads it)
+```
+
+Inspect each PNG for **fidelity** (correct screenshot loaded; cursor on the exact pixel; click ripple and state change on the same frame; caption text right) AND **artifacts** (image blank/not loaded, screen off-canvas, zoom pixelated or overshooting past the frame, caption out of the title-safe lower third, wrong aspect/letterboxing).
+
+```bash
+# Only after stills are clean:
+npx remotion render ProductDemo out/demo.mp4 --props=demo.json
+npx remotion render ProductDemo out/demo.gif --props=demo.json --codec=gif   # README first-screen proof
+```
+
+**Batch (one template, many products):** when re-skinning the demo per product, verify ONE representative product's props via stills before batch-rendering the catalog — catch a blank-image or off-canvas bug once, not N times.
+
+**Before you finish:**
+1. Stills render cleanly at settle / click / end — no errors, screenshots actually loaded (not blank).
+2. Cursor lands on the exact target; ripple + state change on the same frame; caption text correct and in the title-safe lower third.
+3. All motion frame-driven — no CSS transitions / timers / `Date.now()` / `Math.random()`.
+4. The **shipped** props (real screenshot paths) render correctly, not just `defaultProps`.
+5. Full MP4 encoded and plays; (optional) GIF rendered for the README.
+
 ## Reference files
 
 - `references/screenshot-demo.md` — a complete runnable Remotion demo: capturing screenshots at 2× with Playwright, the browser/phone frame components, a multi-step composition that walks a cursor across several screens with click ripples, and a render command.

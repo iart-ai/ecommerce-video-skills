@@ -121,6 +121,42 @@ Keep colors, fonts, transition and slide duration in one theme object so every r
 - Captions/dates in a fixed zone; intro and outro cards bookend the set.
 - Photos, captions and durations come from a folder manifest — one template, any set.
 
+## Deliver & verify (rendered stills → MP4)
+
+This is heavy-tier: the deliverable is an MP4, not a live page. A slideshow ingests a whole folder of user photos — the verify pass is mostly *did every photo actually load and reframe without distortion*.
+
+**Output contract:**
+- A Remotion project with the composition registered (`<Composition>` + zod `schema` + `defaultProps`); Ken Burns scale/pan, transitions and beat timing all pure functions of `useCurrentFrame()` (no CSS transitions, timers, `Date.now()`; motion seeded by index, not `Math.random()`).
+- Photos loaded via `staticFile()`, gated with `delayRender`/`continueRender` so each image (and any caption font) is present before its frame renders — otherwise a slide pops in blank. Duration is data-dependent → compute it in `calculateMetadata` from the photo count, not by hand.
+- Deliverable = the rendered `out/*.mp4` plus the project (re-render when the folder changes).
+
+**Verify loop — render stills → inspect → encode.** Cheap PNGs first, video only once the photos land right.
+
+```bash
+# Frame-exact stills WITH THE MANIFEST YOU'LL SHIP (real photo paths), not defaultProps
+npx remotion still Slideshow out/f-intro.png  --frame=15  --props=photos.json   # intro card
+npx remotion still Slideshow out/f-mid.png    --frame=200 --props=photos.json   # a mid slide mid-Ken-Burns
+npx remotion still Slideshow out/f-outro.png  --frame=500 --props=photos.json   # outro card
+# end frame = durationInFrames - 1 (npx remotion compositions reads it)
+```
+
+Inspect each PNG for **fidelity** (correct photo on each slide; caption/date text right; blurred-pad fills mixed aspect ratios without stretch) AND **artifacts** (image blank/not loaded, photo stretched/distorted, pan exposing an empty edge — start scale ≥ 1.05, caption outside the lower-third safe zone, wrong aspect/letterboxing).
+
+```bash
+# Only after stills are clean:
+npx remotion render Slideshow out/slideshow.mp4 --props=photos.json
+npx remotion render Slideshow out/slideshow.gif --props=photos.json --codec=gif   # README first-screen proof
+```
+
+**Batch (one template, many folders):** when running the same template over several photo sets, verify ONE representative folder's manifest via stills before batch-rendering the rest — catch a blank-image or stretched-aspect bug once, not N times.
+
+**Before you finish:**
+1. Stills render cleanly at intro / mid / outro — no errors, photos actually loaded (not blank).
+2. Captions/dates correct and in the fixed lower-third zone; mixed aspect ratios blurred-padded, nothing stretched; no empty edge from a pan.
+3. All motion frame-driven and seeded by index — no CSS transitions / timers / `Date.now()` / `Math.random()`.
+4. The **shipped** folder manifest renders correctly, not just `defaultProps`.
+5. Full MP4 encoded and plays; (optional) GIF rendered for the README.
+
 ## Reference files
 
 - `references/ken-burns.md` — the complete seeded `<KenBurnsImage>` Remotion component: a per-photo motion vocabulary chosen by `mulberry32(index)`, subject-aware `transform-origin`, safe start-scale math, and an FFmpeg `zoompan` equivalent.

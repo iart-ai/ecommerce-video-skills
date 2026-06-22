@@ -129,6 +129,42 @@ Validate each row before render (now < was, code present, image exists) so a bad
 - One enter curve and one savings accent color across all beats.
 - Offer is an input prop; each data row is validated (now < was) before batch render.
 
+## Deliver & verify (rendered stills → MP4)
+
+This is heavy-tier: the deliverable is an MP4, not a live page. A promo carries exact money — the verify pass is mostly *are the numbers right and is the product image actually there*.
+
+**Output contract:**
+- A Remotion project with the composition registered (`<Composition>` + zod `schema` + `defaultProps`); discount reveal, strike-through, count-down and CTA all pure functions of `useCurrentFrame()` (no CSS transitions, timers, `Date.now()`).
+- Product image loaded via `staticFile()`, gated with `delayRender`/`continueRender` so the hero shot (and brand font) is present before the frame renders — `now`/`% off` computed from `was`, never typed twice.
+- Deliverable = the rendered `out/*.mp4` plus the project (re-render per offer row).
+
+**Verify loop — render stills → inspect → encode.** Cheap PNGs first, video only once the numbers and image are right.
+
+```bash
+# Frame-exact stills WITH THE OFFER PROPS YOU'LL SHIP, not defaultProps
+npx remotion still Promo out/f-discount.png --frame=60  --props=offer.json   # "40% OFF" big number landed
+npx remotion still Promo out/f-price.png    --frame=120 --props=offer.json   # was struck through, now settled
+npx remotion still Promo out/f-cta.png      --frame=270 --props=offer.json   # code + deadline + CTA end-card
+# end frame = durationInFrames - 1 (npx remotion compositions reads it)
+```
+
+Inspect each PNG for **fidelity** (exact `was`/`now`/`% off`; was→now strike-through drawn over the old price; promo code spelled right; product image is the right one) AND **artifacts** (image blank/not loaded, digits jittering or wrong, price overflow/off-canvas, strike on the wrong line, CTA/code outside the title-safe area, wrong aspect/letterboxing).
+
+```bash
+# Only after stills are clean:
+npx remotion render Promo out/promo.mp4 --props=offer.json
+npx remotion render Promo out/promo.gif --props=offer.json --codec=gif   # README first-screen proof
+```
+
+**Batch (one template, many products):** when rendering the price table → N videos, verify ONE representative offer's props via stills before batch-rendering the catalog — a wrong price or blank image caught once beats shipping it N times.
+
+**Before you finish:**
+1. Stills render cleanly at discount / price / CTA — no errors, product image actually loaded (not blank).
+2. `was`/`now`/`% off` are exact (computed from `was`); strike-through over the old price, new price settled, code/deadline correct.
+3. All motion frame-driven — no CSS transitions / timers / `Date.now()` / `Math.random()`.
+4. The **shipped** offer props render correctly, not just `defaultProps`.
+5. Full MP4 encoded and plays; (optional) GIF rendered for the README.
+
 ## Reference files
 
 - `references/promo-components.md` — a complete runnable Remotion promo composition driven by an offer prop: discount badge, was→now strike-through + count-down, promo-code chip, live countdown, and CTA end-card — plus the offer schema, per-row validation, the theme object, and the template×data batch render script for N products.
