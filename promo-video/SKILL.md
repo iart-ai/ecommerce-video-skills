@@ -131,6 +131,8 @@ Validate each row before render (now < was, code present, image exists) so a bad
 
 ## Deliver & verify (rendered stills → MP4)
 
+> **Packaged helper** (`scripts/`): tile your stills with `scripts/contact-sheet.sh sheet.png f-hook.png f-mid.png f-end.png`, then assert the encode with `scripts/probe-mp4.sh out.mp4 [WxH] [fps]`. See `scripts/README.md`.
+
 This is heavy-tier: the deliverable is an MP4, not a live page. A promo carries exact money — the verify pass is mostly *are the numbers right and is the product image actually there*.
 
 **Output contract:**

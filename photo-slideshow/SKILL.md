@@ -123,6 +123,8 @@ Keep colors, fonts, transition and slide duration in one theme object so every r
 
 ## Deliver & verify (rendered stills → MP4)
 
+> **Packaged helper** (`scripts/`): tile your stills with `scripts/contact-sheet.sh sheet.png f-hook.png f-mid.png f-end.png`, then assert the encode with `scripts/probe-mp4.sh out.mp4 [WxH] [fps]`. See `scripts/README.md`.
+
 This is heavy-tier: the deliverable is an MP4, not a live page. A slideshow ingests a whole folder of user photos — the verify pass is mostly *did every photo actually load and reframe without distortion*.
 
 **Output contract:**

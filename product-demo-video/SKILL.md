@@ -161,6 +161,8 @@ Hold the outgoing screen until its click resolves, then transition — never cut
 
 ## Deliver & verify (rendered stills → MP4)
 
+> **Packaged helper** (`scripts/`): tile your stills with `scripts/contact-sheet.sh sheet.png f-hook.png f-mid.png f-end.png`, then assert the encode with `scripts/probe-mp4.sh out.mp4 [WxH] [fps]`. See `scripts/README.md`.
+
 This is heavy-tier: the deliverable is an MP4, not a live page. The demo ingests user assets — screenshots/designs, optional logo — so verification is mostly *did the right image actually load and land in frame*.
 
 **Output contract:**
