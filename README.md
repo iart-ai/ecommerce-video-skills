@@ -8,7 +8,7 @@
 npx skills add iart-ai/ecommerce-video-skills
 ```
 
-Works with Claude Code + 40+ agents.
+Works with Claude Code, Cursor, Codex, GitHub Copilot, and 40+ agents.
 
 ## What's included
 
