@@ -10,15 +10,23 @@
 npx skills add iart-ai/ecommerce-video-skills
 ```
 
+Or add it as a Claude Code plugin marketplace:
+
+```bash
+/plugin marketplace add iart-ai/ecommerce-video-skills
+```
+
+then `/plugin install ecommerce-video-skills`.
+
 Works with Claude Code, Cursor, Codex, GitHub Copilot, and 40+ agents.
 
 ## What's included
 
 | Skill | What it does |
 |---|---|
-| [product-demo-video](./product-demo-video) | Turn static product/app screenshots into a polished animated demo — device frames, synthetic cursor + click, zoom-to-region, feature captions. |
-| [promo-video](./promo-video) | Punchy 6–15s sale spot — discount reveal, was→now price strike-through, promo code, countdown, CTA, batched across many products. |
-| [photo-slideshow](./photo-slideshow) | Turn a folder of photos into a finished video — per-photo Ken Burns motion, beat-synced transitions, mixed aspect ratios, captions. |
+| [product-demo-video](./skills/product-demo-video) | Turn static product/app screenshots into a polished animated demo — device frames, synthetic cursor + click, zoom-to-region, feature captions. |
+| [promo-video](./skills/promo-video) | Punchy 6–15s sale spot — discount reveal, was→now price strike-through, promo code, countdown, CTA, batched across many products. |
+| [photo-slideshow](./skills/photo-slideshow) | Turn a folder of photos into a finished video — per-photo Ken Burns motion, beat-synced transitions, mixed aspect ratios, captions. |
 
 ## When it activates
 
@@ -37,9 +45,9 @@ Works with Claude Code, Cursor, Codex, GitHub Copilot, and 40+ agents.
 
 ## Skills
 
-- [product-demo-video](./product-demo-video)
-- [promo-video](./promo-video)
-- [photo-slideshow](./photo-slideshow)
+- [product-demo-video](./skills/product-demo-video)
+- [promo-video](./skills/promo-video)
+- [photo-slideshow](./skills/photo-slideshow)
 
 ## Topics
 
