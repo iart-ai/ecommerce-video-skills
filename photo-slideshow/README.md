@@ -24,4 +24,4 @@ Turn a set of photos into a finished video that feels shot, not assembled. Each 
 - `references/templating-folder.md` — the folder→manifest builder, the data-driven `<Slideshow>` with intro/outro cards, and a pure-FFmpeg pipeline.
 
 ---
-Part of **[E-Commerce Video Skills](../)** · Built by **[iart.ai](https://iart.ai)** — controllable Motion Graphics MP4 from a prompt or data.
+Part of **[E-Commerce Video Skills](../)** · Built by **[iart.ai](https://iart.ai)** — the AI motion agent for editable, on-brand motion graphics.

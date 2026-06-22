@@ -21,4 +21,4 @@ Make a punchy 6–15s sale spot that announces ONE offer and makes a viewer act 
 - `references/promo-components.md` — a complete runnable Remotion promo composition driven by an offer prop (discount badge, strike-through count-down, code chip, live countdown, CTA end-card), plus the offer schema, per-row validation, the theme object, and the batch render script.
 
 ---
-Part of **[E-Commerce Video Skills](../)** · Built by **[iart.ai](https://iart.ai)** — controllable Motion Graphics MP4 from a prompt or data.
+Part of **[E-Commerce Video Skills](../)** · Built by **[iart.ai](https://iart.ai)** — the AI motion agent for editable, on-brand motion graphics.

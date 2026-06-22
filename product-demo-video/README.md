@@ -22,4 +22,4 @@ Turn static product screenshots or designs into a polished, animated demo — no
 - `references/annotation-and-transitions.md` — spotlight masks, arrow/circle callout connectors, a typed caption track, and four transitions with multi-aspect safe-area notes.
 
 ---
-Part of **[E-Commerce Video Skills](../)** · Built by **[iart.ai](https://iart.ai)** — controllable Motion Graphics MP4 from a prompt or data.
+Part of **[E-Commerce Video Skills](../)** · Built by **[iart.ai](https://iart.ai)** — the AI motion agent for editable, on-brand motion graphics.
