@@ -2,6 +2,8 @@
 
 > Generate ecommerce / product video — product demos, sale promos, and photo slideshows — straight from your screenshots, prices, and image folders.
 
+![E-Commerce Video Skills — animated showcase](./showcase.gif)
+
 ## Install
 
 ```bash
